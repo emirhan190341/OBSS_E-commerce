@@ -21,8 +21,8 @@ Completed the OBSS Java Ignite program, securing 1st place out of 25+ participan
 
 - **Spring Boot**: Core framework for building the backend.
 - **Spring Security**: Ensured secure authentication and authorization.
-- **Java Mail Sender**: Integrated email notifications for user communication.
-- **Kafka**: Implemented event-driven architecture for asynchronous communication.
+- **Java Mail Sender**: Automatically sent confirmation emails when a user adds a product to their cart.
+- **Kafka**: Implemented event-driven architecture where adding a product triggers an event published to a Kafka topic. The consumer processes the order and sends an email to the user.
 - **Elasticsearch**: Enabled powerful and flexible search functionality.
 - **Quartz**: Managed scheduled tasks and job execution.
 - **Liquibase**: Handled database migrations to ensure smooth and consistent database schema changes.
