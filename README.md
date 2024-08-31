@@ -35,6 +35,3 @@ Completed the OBSS Java Ignite program, securing 1st place out of 25+ participan
 - **Zustand**: Managed state efficiently across the application.
 - **TailwindCSS**: Styled the frontend with a modern, utility-first CSS framework.
 
----
-
-This description should give potential users or collaborators a clear understanding of your project's scope, technologies used, and your achievement.
