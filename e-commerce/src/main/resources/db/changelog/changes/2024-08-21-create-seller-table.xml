@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="2024-08-21-create-seller-table" author="emirhanarici">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tbl_seller"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="tbl_seller">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="company_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_number" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="logo" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="website_url" type="VARCHAR(255)"/>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="rating" type="DECIMAL(2,1)"/>
+            <column name="is_verified" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_blacklisted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

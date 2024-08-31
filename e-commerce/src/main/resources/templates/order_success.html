@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <style>
+        /* Fallback styles for email clients that support internal styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff6347;
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+        li {
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .product-details {
+            font-size: 18px;
+            color: #4a90e2;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 20px;
+            color: #ff4500;
+            margin-top: 20px;
+        }
+        .footer {
+            font-size: 14px;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<table class="container" cellpadding="0" cellspacing="0" role="presentation">
+    <tr>
+        <td>
+            <h1>Thank you for your order!</h1>
+            <!-- User Info Section -->
+            <div class="user-info">
+                <p><strong>User:</strong> <span th:text="${cartItems[0].user.name}">User Name</span></p>
+                <p><strong>Email:</strong> <span th:text="${cartItems[0].user.email}">User Email</span></p>
+            </div>
+            <!-- Order Number Section -->
+            <div class="order-info">
+                <p><strong>Order Number:</strong> <span th:text="${orderNumber}">Order Number</span></p>
+            </div>
+            <p>Here are the details of your order:</p>
+            <!-- Order Details Section -->
+            <ul>
+                <li th:each="cartItem : ${cartItems}">
+                    <div class="product-details">
+                        <span th:text="${cartItem.product.name}">Product Name</span>:
+                        <span th:text="${cartItem.quantity}">Quantity</span> x
+                        <span th:text="${cartItem.price}">Price</span>
+                    </div>
+                </li>
+            </ul>
+            <p class="total">Total: <span th:text="${total}">Total Price</span></p>
+            <p class="footer">If you have any questions, please contact our support team.</p>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

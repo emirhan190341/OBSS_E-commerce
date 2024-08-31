@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="2024-08-21-create-user-blacklisted-sellers-table" author="emirhanarici">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user_blacklisted_sellers"/>
+            </not>
+        </preConditions>
+        <createTable tableName="user_blacklisted_sellers">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="seller_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="user_blacklisted_sellers"
+                baseColumnNames="user_id"
+                referencedTableName="tbl_user"
+                referencedColumnNames="id"
+                constraintName="fk_blacklisted_user"/>
+
+        <addForeignKeyConstraint
+                baseTableName="user_blacklisted_sellers"
+                baseColumnNames="seller_id"
+                referencedTableName="tbl_seller"
+                referencedColumnNames="id"
+                constraintName="fk_blacklisted_seller"/>
+    </changeSet>
+</databaseChangeLog>
